@@ -63,6 +63,8 @@ td.trim{max-width:130px}
 .fsd{font:700 15px var(--display);color:var(--fsd);letter-spacing:.04em;white-space:nowrap}
 .cfx{min-width:150px}
 .cfx a{color:var(--accent);text-decoration:none;white-space:nowrap}
+.cfxlink{display:inline-block;font-weight:600;border:1px solid var(--accent);border-radius:6px;padding:2px 8px;margin-bottom:3px}
+.cfxlink:hover{background:var(--accent-soft)}
 .flag{color:var(--fsd)}
 .links{display:flex;flex-direction:column;gap:3px}
 .links a{color:var(--accent);text-decoration:none;white-space:nowrap}
@@ -136,7 +138,7 @@ function cfxCell(c){
   if (c.co != null) lines.push(c.co + (c.co == 1 ? ' owner' : ' owners'));
   if (c.ca) lines.push(bad ? `<b class="flag">${esc(c.ca)}</b>` : esc(c.ca));
   if (c.cb) lines.push(`<span class="muted">${esc(c.cb)}</span>`);
-  if (c.cx) lines.push(`<a href="${esc(c.cx)}" target="_blank" rel="noopener">Free ${esc(c.ct || 'report')} ↗</a>`);
+  if (c.cx) lines.unshift(`<a class="cfxlink" href="${esc(c.cx)}" target="_blank" rel="noopener">Open ${esc(c.ct || 'report')} ↗</a>`);
   else if (c.vin) lines.push(`<span class="muted">VIN ${esc(c.vin)}</span>`);
   else lines.push('<span class="muted">Ask seller for VIN</span>');
   return lines.join('<br>');
